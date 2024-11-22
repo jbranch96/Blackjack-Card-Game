@@ -6,7 +6,7 @@ class GameStateManager:
     def __init__(self):
         self.current_player : Player
         self.deck : Deck = Deck()
-        self.gamemode: GameModeEnum = GameModeEnum.TWO_PLAYER # Default game mode
+        self.gamemode: GameModeEnum = GameModeEnum.VS_COMPUTER # Default game mode
         self.players : list[Player] = []
     
     def get_current_player(self) -> Player:
