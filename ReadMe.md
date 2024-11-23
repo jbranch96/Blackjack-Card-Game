@@ -1,6 +1,6 @@
 # Blackjack Console App
 
-This folder contains source code for a Python based CLI implmentation of the game Blackjack.
+This folder contains source code for a Python based CLI implementation of the game Blackjack.
 
 ## Game Modes
 # 2-Player Mode
