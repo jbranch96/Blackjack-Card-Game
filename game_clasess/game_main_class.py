@@ -13,6 +13,7 @@ class Game:
         self.end_round : bool = False
         self.gamestate = GameStateManager()
         self.gamecontroller = GameController(_gamestate=self.gamestate)
+        self.DEFAULT_SLEEP_SECONDS : float = 1.5
 
     def run_game_loop(self) -> None:    
         user_input : str = ""
@@ -36,6 +37,8 @@ class Game:
 
                 # Initial deal of two cards per player
                 print("\nDealing initial cards...")
+                sleep(self.DEFAULT_SLEEP_SECONDS)
+                
                 print("-------------------------")
                 for _ in range(num_of_players):
                     for _ in range(2): 
@@ -48,32 +51,48 @@ class Game:
                     for player in current_game.gamestate.get_players():
                         current_player_name : str = current_game.gamestate.get_current_player().name
                         current_player_hand_val: int = current_game.gamestate.get_current_player().hand_value
+                        non_current_player_name : str = current_game.gamestate.get_next_player().name
+                        non_current_player_hand_val: int = current_game.gamestate.get_next_player().hand_value
                         user_input : str = ""
 
                         if player.status == PlayerStatusEnum.UNDER_21:
                             
                             if current_player_name == "Computer":
                                 
-                                print(f"\n{current_player_name}'s current hand: {current_player_hand_val}")
+                                print(f"\n{current_player_name}'s current value: {current_player_hand_val}")
 
                                 if current_player_hand_val < 17:
-                                    print(f"Taking a hit for the computer...")
-                                    sleep(1)
+                                    print(f"Computer has less than 17, taking a hit for the computer...")
+                                    sleep(self.DEFAULT_SLEEP_SECONDS)
+                                    
                                     self.end_round = current_game.gamecontroller.take_hit()
+                                    sleep(self.DEFAULT_SLEEP_SECONDS)
                                 else:
                                     print(f"Standing for the computer...")
-                                    sleep(1)
+                                    sleep(self.DEFAULT_SLEEP_SECONDS)
+                                    
                                     self.end_round = current_game.gamecontroller.stand()
+                                    sleep(self.DEFAULT_SLEEP_SECONDS)
                                 
                             else:
 
                                 while(user_input not in ("1","2")):
-                                    print(f"\n{current_player_name} your current hand: {current_player_hand_val}")
+                                    print(
+                                        f"\n{current_player_name} you are currently at: {current_player_hand_val}",
+                                        f"{non_current_player_name} has : {non_current_player_hand_val}",
+                                        sep=", "
+                                        )
                                     user_input = input(f"{current_player_name} what would you like to do: [1] Take a hit or [2] Stand ? ")
 
                                     if user_input not in ("1","2"): print("Invalid selection, please select a valid option.\n")
-                                    elif user_input == "1": self.end_round = current_game.gamecontroller.take_hit()
-                                    else: self.end_round = current_game.gamecontroller.stand()
+                                    
+                                    elif user_input == "1": 
+                                        self.end_round = current_game.gamecontroller.take_hit()
+                                        sleep(self.DEFAULT_SLEEP_SECONDS)
+                                    
+                                    else: 
+                                        self.end_round = current_game.gamecontroller.stand()
+                                        sleep(self.DEFAULT_SLEEP_SECONDS)
 
                         if self.end_round : break
 

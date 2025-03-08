@@ -108,7 +108,7 @@ class GameController:
                     current_player.hand_value += 11 #Always have the computer select 11 for aces, if ace + computer hand <= 21
         else:
             current_player.hand_value += hit_card.type.value
-        print(f"{current_player.name} your new hand: {current_player.hand_value}", end=" ")
-        current_player.show_cards()
+        print(f"{current_player.name}'s new value: {current_player.hand_value}", end=" || ")
+        current_player.show_all_cards_values()
         self.set_player_status()
         return self.evaluate_game_status()

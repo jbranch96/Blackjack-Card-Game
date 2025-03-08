@@ -11,7 +11,12 @@ class Player:
         self.hand_value : int = 0
         self.status : PlayerStatusEnum = PlayerStatusEnum.UNDER_21 
 
-    def show_cards(self) -> None:
+    def show_all_cards_full(self) -> None:
         card_list : list[tuple]= []
         for card in self.cards: card_list.append((card.type.name, card.suit.value))
         print(card_list)
+
+    def show_all_cards_values(self) -> None:
+        card_list : list = []
+        for card in self.cards: card_list.append(card.type.name)
+        print("hand:", card_list)
