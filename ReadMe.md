@@ -12,10 +12,10 @@ This folder contains source code for a Python based CLI implementation of the ga
 
 # Game Modes
 ## 2-Player Mode
-In this mode, two players take turns making their selection to either hit or stand. The player to bust first loses. To win, a player must either reach Blackjack (hand value = 21) or if both players have decided to stand the player with the higher hand value wins. If both players have decided to stand with equivalent hand values then the result is a tie game.
+In this mode, two players take turns making their selection to either hit or stand. The player to bust first loses. To win, a player must either reach Blackjack (hand value = 21) or if both players have decided to stand, the player with the higher hand value wins. If both players have decided to stand with equivalent hand values then the result is a tie game.
 
 ## Vs-Computer Mode
-In the Vs-Computer mode, one user competes against the computer. On each turn of the computer, it will take a hit until it's hand value reaches 17 or higher. Upon reaching 17 or higher the computer will stand.
+In the Vs-Computer mode, one user competes against the computer. On each turn of the computer, the computer will take a hit until it's hand value reaches 17 or higher. Upon reaching 17 or higher the computer will stand.
 				
 # Python Blackjack Console App:
 ![Python-Blackjack-Console-App](./images/python-console-app.png)
